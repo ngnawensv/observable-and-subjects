@@ -11,6 +11,21 @@ export class ObservableComponent implements OnInit {
 
   constructor() { }
 
+
+
+    //Creating Student Observable
+     studentObservable$ = new Observable<Student>(observer => {
+      observer.next(this.student1);
+      observer.next(this.students[0]);
+      setTimeout(() => observer.next(this.students[1]), 1000);//Emission apres 1 seconde
+      setTimeout(() => observer.next(this.students[0]), 10000);//Emission apres 10 secondes
+     });
+
+  //Creating Student[] Observable
+   studentsObservable$ = new Observable<Student[]>(observer => {
+    observer.next(this.students);
+  });
+
   student1:Student={id:12,
     name:'Samuel',
     surname:'Vermon'
@@ -62,26 +77,12 @@ export class ObservableComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //Creating Student Observable
-    const studentObservable$ = new Observable<Student>(observer => {
-      observer.next(this.student1);
-      observer.next(this.students[0]);
-      setTimeout(() => observer.next(this.students[1]), 1000);
-      setTimeout(() => observer.next(this.students[0]), 10000);
-    });
-
     console.log("before subscribe on studentObservable$");
-    const observer = studentObservable$.subscribe((student) => console.log("received: ", student));
+    const observer = this.studentObservable$.subscribe((student) => console.log("received: ", student));
     console.log("after subscribe on studentObservable$");
 
-    
-    //Creating Student[] Observable
-    const studentsObservable$ = new Observable<Student[]>(observer => {
-      observer.next(this.students);
-    });
-
     console.log("before subscribe on studentsObservable$");
-    const observerStudents = studentsObservable$.subscribe((students) => console.log("received: ", students));
+    const observerStudents = this.studentsObservable$.subscribe((students) => console.log("received: ", students));
     console.log("after subscribe on studentsObservable$");
 
   }
