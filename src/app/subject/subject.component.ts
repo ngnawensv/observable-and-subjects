@@ -11,8 +11,11 @@ export class SubjectComponent implements OnInit {
 
   //Crating Student Subject
   studentSubject = new Subject<Student>();
+
+  //Crating Student[] Subject
   studentsSubject = new Subject<Student[]>();
 
+  
   student1:Student={id:12,
     name:'Samuel',
     surname:'Vermon'

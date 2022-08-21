@@ -11,8 +11,6 @@ export class ObservableComponent implements OnInit {
 
   constructor() { }
 
-
-
     //Creating Student Observable
      studentObservable$ = new Observable<Student>(observer => {
       observer.next(this.student1);
