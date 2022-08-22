@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { interval, Observable } from 'rxjs';
 import { Student } from '../models/student';
 
+/**
+ *This component present us how the Observable works
+ *
+ *
+ */
 @Component({
   selector: 'app-observable',
   templateUrl: './observable.component.html',
@@ -9,26 +14,13 @@ import { Student } from '../models/student';
 })
 export class ObservableComponent implements OnInit {
 
-  constructor() { }
-
-    //Creating Student Observable
-     studentObservable$ = new Observable<Student>(observer => {
-      observer.next(this.student1);
-      observer.next(this.students[0]);
-      setTimeout(() => observer.next(this.students[1]), 1000);//Emission apres 1 seconde
-      setTimeout(() => observer.next(this.students[0]), 10000);//Emission apres 10 secondes
-     });
-
-  //Creating Student[] Observable
-   studentsObservable$ = new Observable<Student[]>(observer => {
-    observer.next(this.students);
-  });
-
+  //Student Object
   student1:Student={id:12,
     name:'Samuel',
     surname:'Vermon'
     }
 
+  //List of the students
   students: Student[] = [
     {
       id: 1,
@@ -73,12 +65,36 @@ export class ObservableComponent implements OnInit {
     },
   ]
 
+  /**
+   *Creating Student Observable
+   *This Observable emit the flux of the students (student1, puis students[0], puis students[1] et enfin students[2]) to observer
+   *
+   *  @memberof ObservableComponent
+   */
+  studentObservable$ = new Observable<Student>(observer => {
+      observer.next(this.student1);
+      observer.next(this.students[0]);
+      setTimeout(() => observer.next(this.students[1]), 1000);//Emission  after 1 seconde
+      setTimeout(() => observer.next(this.students[2]), 10000);//Emission  after 10 secondes
+     });
+
+  //Creating Student[] Observable
+   studentsObservable$ = new Observable<Student[]>(observer => {
+    observer.next(this.students);
+  });
+
+
+
+  constructor() { }
+
   ngOnInit(): void {
 
+    // Subscription to  studentObservable$
     console.log("before subscribe on studentObservable$");
     const observer = this.studentObservable$.subscribe((student) => console.log("received: ", student));
     console.log("after subscribe on studentObservable$");
 
+    // Subscription to  studentsObservable$
     console.log("before subscribe on studentsObservable$");
     const observerStudents = this.studentsObservable$.subscribe((students) => console.log("received: ", students));
     console.log("after subscribe on studentsObservable$");
