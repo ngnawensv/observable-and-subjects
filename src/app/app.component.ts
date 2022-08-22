@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'observable-and-subjects';
+  constructor(private router: Router) {}
+
+  goToHome() {
+    this.router.navigate(['/', 'home']);
+  }
+  goToObservable() {
+    this.router.navigate(['/', 'observable']);
+  }
+  goToSubject() {
+    this.router.navigate(['/', 'subject']);
+  }
+  goToPromise() {
+    this.router.navigate(['/', 'promise']);
+  }
 }

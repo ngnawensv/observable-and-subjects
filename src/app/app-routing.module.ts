@@ -3,8 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ObservableComponent } from './observable/observable.component';
 import { SubjectComponent } from './subject/subject.component';
 import { PromiseComponent } from './promise/promise.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  {
+    path : 'home',
+    component : HomeComponent
+  },
   {
     path : 'observable',
     component : ObservableComponent

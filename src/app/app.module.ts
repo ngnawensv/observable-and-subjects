@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ObservableComponent } from './observable/observable.component';
 import { SubjectComponent } from './subject/subject.component';
 import { PromiseComponent } from './promise/promise.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { PromiseComponent } from './promise/promise.component';
     ObservableComponent,
     SubjectComponent,
     PromiseComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
