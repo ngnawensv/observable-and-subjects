@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ObservableComponent } from './observable/observable.component';
 import { SubjectComponent } from './subject/subject.component';
+import { PromiseComponent } from './promise/promise.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path : 'subject',
     component : SubjectComponent
+  },
+  {
+    path : 'promise',
+    component : PromiseComponent
   }
 ];
 
