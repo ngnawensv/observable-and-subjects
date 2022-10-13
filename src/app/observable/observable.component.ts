@@ -4,8 +4,6 @@ import { Student } from '../models/student';
 
 /**
  *This component present us how the Observable works
- *
- *
  */
 @Component({
   selector: 'app-observable',
